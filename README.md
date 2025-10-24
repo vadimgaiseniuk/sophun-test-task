@@ -10,6 +10,7 @@
 
 - Zenject is used for dependency injection
 - All services and Global State Machine are binded in the Global Installer
+- The game is lauched using Bootstrapper which loads the BootstrapState
 
 ## Services
 
