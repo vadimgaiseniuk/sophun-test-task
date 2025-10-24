@@ -79,7 +79,7 @@ namespace Services.SimplePopupService
 
             foreach (IPopupInitialization<TData, TModel> component in popupInitComponents)
             {
-                await component.Initialize(param, model, m_AssetManagingService);
+                await component.Initialize(param, model);
             }
 
             m_Popups.Add(name, popupObject);

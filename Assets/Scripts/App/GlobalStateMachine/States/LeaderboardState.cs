@@ -22,14 +22,17 @@ namespace App.GlobalStateMachine
 
         private Dictionary<string, Sprite> m_CachedAvatars;
 
-        public LeaderboardState(GlobalStateMachine globalStateMachine, IFileHandlingService fileHandlingService, IDataSerializationService dataSerializationService, IWebRequestHandlingService webRequestHandlingService, IPopupManagingService popupManagingService)
+        public LeaderboardState(GlobalStateMachine globalStateMachine, IFileHandlingService fileHandlingService, IDataSerializationService dataSerializationService, IWebRequestHandlingService webRequestHandlingService, IAssetManagingService assetManagingService, IPopupManagingService popupManagingService)
         {
             m_GlobalStateMachine = globalStateMachine;
             m_FileHandlingService = fileHandlingService;
             m_DataSerializationService = dataSerializationService;
             m_WebRequestHandlingService = webRequestHandlingService;
+            AssetManagingService = assetManagingService;
             m_PopupManagingService = popupManagingService;
         }
+        
+        public IAssetManagingService AssetManagingService { get; }
         
         public override void Enter()
         {

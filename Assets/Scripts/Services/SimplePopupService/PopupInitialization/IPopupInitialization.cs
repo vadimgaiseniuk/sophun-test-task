@@ -4,7 +4,6 @@
 //of Sophun Games LTD is strictly prohibited and could be subject to legal action.
 
 using System.Threading.Tasks;
-using Services.AssetManagingService;
 
 namespace Services.SimplePopupService
 {
@@ -18,7 +17,6 @@ namespace Services.SimplePopupService
         /// </summary>
         /// <param name="data">The initialization parameters.</param>
         /// <param name="model">The model to handle the initialization</param>
-        /// <param name="assetManagingService">The asset managing service</param>
-        Task Initialize(TData data, TModel model, IAssetManagingService assetManagingService);
+        Task Initialize(TData data, TModel model);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Architecture.Core;
-using Services.AssetManagingService;
 using Services.SimplePopupService;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +13,9 @@ namespace App.UserInterface
 
         private LeaderboardPopupPresenter m_Presenter;
         
-        public async Task Initialize(LeaderboardData data, ILeaderboardModel model, IAssetManagingService assetManagingService)
+        public async Task Initialize(LeaderboardData data, ILeaderboardModel model)
         {
-            m_Presenter = new LeaderboardPopupPresenter(model, assetManagingService, this);
+            m_Presenter = new LeaderboardPopupPresenter(model, this);
             
             await m_Presenter.Construct(data, m_ContentContainer);
             Subscribe();

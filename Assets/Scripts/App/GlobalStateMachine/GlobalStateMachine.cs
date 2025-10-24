@@ -15,7 +15,7 @@ namespace App.GlobalStateMachine
             Context = new GlobalContext();
             
             var bootstrapState = new BootstrapState(this, sceneManagingService, assetManagingService);
-            var leaderboardState = new LeaderboardState(this, fileHandlingService, dataSerializationService, webRequestHandlingService, popupManagingService);
+            var leaderboardState = new LeaderboardState(this, fileHandlingService, dataSerializationService, webRequestHandlingService, assetManagingService, popupManagingService);
             var quitState = new QuitState(this, assetManagingService);
             
             Add(bootstrapState);

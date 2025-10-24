@@ -9,15 +9,13 @@ namespace App.UserInterface
     public class LeaderboardPopupPresenter
     {
         private readonly ILeaderboardModel m_Model;
-        private readonly IAssetManagingService m_AssetManagingService;
         private readonly LeaderboardPopupView m_View;
         
         private List<PlayerLeaderboardEntryView> m_PlayerLeaderboardEntryViews;
 
-        public LeaderboardPopupPresenter(ILeaderboardModel model, IAssetManagingService assetManagingService, LeaderboardPopupView view)
+        public LeaderboardPopupPresenter(ILeaderboardModel model, LeaderboardPopupView view)
         {
             m_Model = model;
-            m_AssetManagingService = assetManagingService;
             m_View = view;
         }
 
@@ -27,7 +25,7 @@ namespace App.UserInterface
             
             foreach (PlayerLeaderboardEntryData playerLeaderboardEntryData in data.Leaderboard)
             {
-                PlayerLeaderboardEntryView playerLeaderboardEntryView = await m_AssetManagingService.InstantiateAssetAsync<PlayerLeaderboardEntryView>(AssetPath.PlayerEntryViewPath, contentContainer);
+                PlayerLeaderboardEntryView playerLeaderboardEntryView = await m_Model.AssetManagingService.InstantiateAssetAsync<PlayerLeaderboardEntryView>(AssetPath.PlayerEntryViewPath, contentContainer);;
                 
                 (Color32 playerColor, float playerSizeMultiplier) = m_Model.GetPlayerTypeColorAndSize(playerLeaderboardEntryData.Type);
                 playerLeaderboardEntryView.Construct(playerLeaderboardEntryData.Avatar, playerLeaderboardEntryData.Name, playerLeaderboardEntryData.Score.ToString(), playerColor, playerSizeMultiplier);
