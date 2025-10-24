@@ -525,6 +525,7 @@ GameObject:
   - component: {fileID: 5964144720667456821}
   - component: {fileID: 5964144720667456822}
   - component: {fileID: 61057810546705661}
+  - component: {fileID: 183906356091311219}
   m_Layer: 5
   m_Name: PopupView
   m_TagString: Untagged
@@ -619,6 +620,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &183906356091311219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964144720667456824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd26aa3dbd6349ee9f0699ecac438991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ContentContainer: {fileID: 5964144720296114812}
+  m_CloseButton: {fileID: 5964144720482879201}
 --- !u!1 &5964144720897732537
 GameObject:
   m_ObjectHideFlags: 0
