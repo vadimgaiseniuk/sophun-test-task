@@ -12,4 +12,4 @@ EditorBuildSettings:
     path: Assets/Scenes/LeaderboardScene.unity
     guid: 8fd6bbc448964cd4e9e1bf1155a23960
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 9a3bcfef5f53a455081c8185544f8c40, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: 25b860ec99c69e84fbefbd6a4bcaded5, type: 2}
