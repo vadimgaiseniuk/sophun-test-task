@@ -3,6 +3,8 @@
 //Any use, reproduction, distribution, or release of this code or documentation without the express permission
 //of Sophun Games LTD is strictly prohibited and could be subject to legal action.
 
+using UnityEngine;
+
 namespace SimplePopupService
 {
     public interface IPopupManagingService
@@ -13,7 +15,9 @@ namespace SimplePopupService
         /// </summary>
         /// <param name="name">The name of the popup to open.</param>
         /// <param name="param">The parameters to initialize the popup with.</param>
-        void OpenPopup(string name, object param);
+        /// <param name="model">The model to handle the popup with</param>
+        /// <param name="parent">The parent to instantiate the popup in</param>
+        void OpenPopup<TData, TModel>(string name, TData param, TModel model, Transform parent);
 
         /// <summary>
         ///     Closes a popup by its name.

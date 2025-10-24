@@ -4,18 +4,21 @@
 //of Sophun Games LTD is strictly prohibited and could be subject to legal action.
 
 using System.Threading.Tasks;
+using Services.AssetManagingService;
 
 namespace SimplePopupService
 {
     /// <summary>
     ///     An interface for initializing popups.
     /// </summary>
-    public interface IPopupInitialization
+    public interface IPopupInitialization<in TData, in TModel>
     {
         /// <summary>
         ///     Initializes the popup with the given parameters.
         /// </summary>
-        /// <param name="param">The initialization parameters.</param>
-        Task Init(object param);
+        /// <param name="data">The initialization parameters.</param>
+        /// <param name="model">The model to handle the initialization</param>
+        /// <param name="assetManagingService">The asset managing service</param>
+        Task Initialize(TData data, TModel model, IAssetManagingService assetManagingService);
     }
 }

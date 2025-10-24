@@ -5,15 +5,15 @@ namespace Architecture.Core
 {
     public abstract class StateMachineBase
     {
-        private StateBase m_currentState;
-        private readonly Dictionary<Type, StateBase> m_states = new();
+        private StateBase m_CurrentState;
+        private readonly Dictionary<Type, StateBase> m_States = new();
         
         protected void Add<TState>(TState state) where TState : StateBase
         {
-            if (m_states.ContainsKey(typeof(TState)))
+            if (m_States.ContainsKey(typeof(TState)))
                 return;
 
-            m_states.Add(typeof(TState), state);
+            m_States.Add(typeof(TState), state);
         }
 
         public void ChangeState<TState>() where TState : StateBase
@@ -23,16 +23,16 @@ namespace Architecture.Core
 
         public void ExitStateMachine()
         {
-            m_currentState?.Exit();
-            m_currentState = null;
+            m_CurrentState?.Exit();
+            m_CurrentState = null;
         }
 
         public void LoadState(Type type)
         {
-            m_currentState?.Exit();
+            m_CurrentState?.Exit();
             
-            m_currentState = m_states[type];
-            m_currentState.Enter();
+            m_CurrentState = m_States[type];
+            m_CurrentState.Enter();
         }
     }
 }

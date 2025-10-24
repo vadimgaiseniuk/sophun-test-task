@@ -1,8 +1,8 @@
-﻿using Architecture.States;
+﻿using Architecture.Core;
 using UnityEngine;
 using Zenject;
 
-namespace Architecture.Core
+namespace App
 {
     public class Bootstrapper : MonoBehaviour
     {

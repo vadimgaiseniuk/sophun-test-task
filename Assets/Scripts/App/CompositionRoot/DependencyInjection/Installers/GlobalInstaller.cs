@@ -1,10 +1,12 @@
 ﻿using SceneManagingService;
+using Services.AssetManagingService;
 using Services.DataSerializationService;
 using Services.FileHandlingService;
+using Services.WebRequestHandlingService;
 using SimplePopupService;
 using Zenject;
 
-namespace Architecture.Core.Installers
+namespace App
 {
     public class GlobalInstaller : MonoInstaller
     {
@@ -21,6 +23,8 @@ namespace Architecture.Core.Installers
 
         private void InstallServicesBindings()
         {
+            Container.Bind<IAssetManagingService>().To<AssetManagingService>().AsSingle();
+            Container.Bind<IWebRequestHandlingService>().To<WebRequestHandlingService>().AsSingle();
             Container.Bind<ISceneManagingService>().To<SceneManagingService.SceneManagingService>().AsSingle();
             Container.Bind<IFileHandlingService>().To<FileHandlingService>().AsSingle();
             Container.Bind<IDataSerializationService>().To<JsonDataSerializationService>().AsSingle();

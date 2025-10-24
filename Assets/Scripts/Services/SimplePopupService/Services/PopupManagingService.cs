@@ -5,9 +5,8 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Services.AssetManagingService;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace SimplePopupService
 {
@@ -16,7 +15,13 @@ namespace SimplePopupService
     /// </summary>
     public class PopupManagingService : IPopupManagingService
     {
+        private readonly IAssetManagingService m_AssetManagingService;
         private readonly Dictionary<string, GameObject> m_Popups = new();
+
+        private PopupManagingService(IAssetManagingService assetManagingService)
+        {
+            m_AssetManagingService = assetManagingService;
+        }
 
         /// <summary>
         ///     Opens a popup by its name and initializes it with the given parameters.
@@ -24,7 +29,9 @@ namespace SimplePopupService
         /// </summary>
         /// <param name="name">The name of the popup to open.</param>
         /// <param name="param">The parameters to initialize the popup with.</param>
-        public async void OpenPopup(string name, object param)
+        /// <param name="model">The model to handle the popup</param>
+        /// <param name="parent">The parent to instantiate the popup in</param>
+        public async void OpenPopup<TData, TModel>(string name, TData param, TModel model, Transform parent)
         {
             if (m_Popups.ContainsKey(name))
             {
@@ -32,7 +39,7 @@ namespace SimplePopupService
                 return;
             }
 
-            await LoadPopup(name, param);
+            await LoadPopup<TData, TModel>(name, param, model, parent);
         }
 
         /// <summary>
@@ -46,7 +53,7 @@ namespace SimplePopupService
                 return;
 
             GameObject popup = m_Popups[name];
-            Addressables.ReleaseInstance(popup);
+            m_AssetManagingService.ReleaseAssetInstance(popup);
             m_Popups.Remove(name);
         }
 
@@ -57,31 +64,25 @@ namespace SimplePopupService
         /// </summary>
         /// <param name="name">The name of the popup to load.</param>
         /// <param name="param">The parameters to initialize the popup with.</param>
-        private async Task LoadPopup(string name, object param)
+        /// <param name="model">The model to handle the popup</param>
+        /// <param name="parent">The parent to instantiate the popup in</param>
+        private async Task LoadPopup<TData, TModel>(string name, TData param, TModel model, Transform parent)
         {
-            AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(name);
-            await handle.Task;
+            GameObject popupObject = await m_AssetManagingService.InstantiateAssetAsync(name, parent);
 
-            if (handle.Status == AsyncOperationStatus.Succeeded)
+            if (popupObject == null)
+                return;
+            
+            popupObject.SetActive(true);
+            
+            IPopupInitialization<TData, TModel>[] popupInitComponents = popupObject.GetComponents<IPopupInitialization<TData, TModel>>();
+
+            foreach (IPopupInitialization<TData, TModel> component in popupInitComponents)
             {
-                GameObject popupObject = handle.Result;
-
-                popupObject.SetActive(false);
-                IPopupInitialization[] popupInitComponents = popupObject.GetComponents<IPopupInitialization>();
-
-                foreach (IPopupInitialization component in popupInitComponents)
-                {
-                    await component.Init(param);
-                }
-
-                popupObject.SetActive(true);
-
-                m_Popups.Add(name, popupObject);
+                await component.Initialize(param, model, m_AssetManagingService);
             }
-            else
-            {
-                Debug.LogError($"Failed to load Popup with name {name}");
-            }
+
+            m_Popups.Add(name, popupObject);
         }
     }
 }

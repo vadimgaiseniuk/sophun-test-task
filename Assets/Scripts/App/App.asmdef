@@ -1,10 +1,11 @@
 ﻿{
-  "name": "LeaderboardTestTask",
+  "name": "App",
   "rootNamespace": "",
   "references": [
+    "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
     "GUID:5409176f4b7146eaabced273b709c514",
     "GUID:1207d0e93d52490a8a279530e527ad0e",
-    "GUID:3716a7cfd94e42f2a3eb8db418730a3a"
+    "GUID:6055be8ebefd69e48b49212b09b47b2f"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
