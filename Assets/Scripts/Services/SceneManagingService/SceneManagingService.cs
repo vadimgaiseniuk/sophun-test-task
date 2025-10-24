@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,15 +6,12 @@ namespace SceneManagingService
 {
     public class SceneManagingService : ISceneManagingService
     {
-        public async Task LoadSceneAsync(string sceneName, Action onSceneLoaded = null, LoadSceneMode mode = LoadSceneMode.Additive)
+        public async Task LoadSceneAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Additive)
         {
             bool isThisSceneActive = SceneManager.GetActiveScene().name == sceneName;
             
             if (isThisSceneActive)
-            {
-                onSceneLoaded?.Invoke();
                 return;
-            }
 
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName, mode);
 
@@ -28,8 +24,6 @@ namespace SceneManagingService
             }
             
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-            
-            onSceneLoaded?.Invoke();
         }
     }
 }
