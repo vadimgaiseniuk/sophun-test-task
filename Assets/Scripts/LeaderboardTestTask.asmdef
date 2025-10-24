@@ -1,3 +1,17 @@
 ﻿{
-  "name": "LeaderboardTestTask"
+  "name": "LeaderboardTestTask",
+  "rootNamespace": "",
+  "references": [
+    "GUID:5409176f4b7146eaabced273b709c514",
+    "GUID:1207d0e93d52490a8a279530e527ad0e"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

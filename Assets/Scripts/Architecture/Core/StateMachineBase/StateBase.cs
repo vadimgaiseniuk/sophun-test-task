@@ -2,11 +2,11 @@
 {
     public abstract class StateBase
     {
-        protected StateMachineBase StateMachineBase;
+        protected StateMachineBase StateMachine;
         
         public void Initialize(StateMachineBase stateMachine)
         {
-            StateMachineBase = stateMachine;    
+            StateMachine = stateMachine;    
         }
         
         public abstract void Enter();
