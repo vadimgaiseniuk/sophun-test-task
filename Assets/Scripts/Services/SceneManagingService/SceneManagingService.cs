@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SceneManagementService
+namespace SceneManagingService
 {
-    public class SceneManagementService : ISceneManagementService
+    public class SceneManagingService : ISceneManagingService
     {
         public async Task LoadSceneAsync(string sceneName, Action onSceneLoaded = null, LoadSceneMode mode = LoadSceneMode.Additive)
         {

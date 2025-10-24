@@ -2,9 +2,9 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-namespace SceneManagementService
+namespace SceneManagingService
 {
-    public interface ISceneManagementService
+    public interface ISceneManagingService
     {
         Task LoadSceneAsync(string sceneName, Action onSceneLoaded = null, LoadSceneMode mode = LoadSceneMode.Additive);
     }
