@@ -15,7 +15,7 @@ namespace App.Constants
         public const float DiamondPlayerSize = 1.25f;
         public const float GoldPlayerSize = 1.2f;
         public const float SilverPlayerSize = 1.15f;
-        public const float BronzePlayerSize = 1.0f;
-        public const float DefaultPlayerSize = 0.8f;
+        public const float BronzePlayerSize = 1.1f;
+        public const float DefaultPlayerSize = 1.0f;
     }
 }
