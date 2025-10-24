@@ -44,11 +44,13 @@ namespace App.GlobalStateMachine
 
         private void Subscribe()
         {
+            Application.quitting += LoadQuitState;
             m_GlobalStateMachine.Context.UIRootView.LeaderboardButton.onClick.AddListener(DisplayLeaderboardPopup);
         }
 
         private void Unsubscribe()
         {
+            Application.quitting -= LoadQuitState;
             m_GlobalStateMachine.Context.UIRootView.LeaderboardButton.onClick.RemoveAllListeners();
         }
 
@@ -105,6 +107,11 @@ namespace App.GlobalStateMachine
             m_CachedAvatars ??= new Dictionary<string, Sprite>(leaderboardData.Leaderboard.Count);
             
             m_PopupManagingService.OpenPopup<LeaderboardData, ILeaderboardModel>(AssetPath.PopupViewPath, leaderboardData, this, m_GlobalStateMachine.Context.UIRootView.ContentContainer);
+        }
+
+        private void LoadQuitState()
+        {
+            m_GlobalStateMachine.ChangeState<QuitState>();
         }
     }
 }

@@ -28,10 +28,6 @@ namespace App.GlobalStateMachine
             m_GlobalStateMachine.ChangeState<LeaderboardState>();
         }
 
-        public override void Exit()
-        {
-        }
-
         private async Task ConstructUIRoot()
         {
             m_GlobalStateMachine.Context.UIRootView = await m_AssetManagingService.InstantiateAssetAsync<UIRootView>(AssetPath.UIRootPath);

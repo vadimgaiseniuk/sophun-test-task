@@ -21,7 +21,6 @@ namespace Services.WebRequestHandlingService
                 while (!asyncOperation.isDone)
                 {
                     await Task.Yield();
-                    Debug.Log(asyncOperation.progress);
                 }
 
                 if (request.result != UnityWebRequest.Result.Success)

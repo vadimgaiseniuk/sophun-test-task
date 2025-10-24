@@ -24,7 +24,7 @@ namespace Services.AssetManagingService
         {
             AsyncOperationHandle<GameObject> handle = Addressables.InstantiateAsync(assetAddress, parent);
             await handle.Task;
-
+            
             if (handle.Status == AsyncOperationStatus.Succeeded)
                 return handle.Result.GetComponent<T>();
             
