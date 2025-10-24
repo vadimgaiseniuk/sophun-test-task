@@ -14,7 +14,7 @@ namespace SimplePopupManager
     /// <summary>
     ///     Manages popups, providing functionality for opening, closing, and loading popups.
     /// </summary>
-    public class PopupManagerServiceService : IPopupManagerService
+    public class PopupManagingService : IPopupManagingService
     {
         private readonly Dictionary<string, GameObject> m_Popups = new();
 

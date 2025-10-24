@@ -3,11 +3,9 @@
 //Any use, reproduction, distribution, or release of this code or documentation without the express permission
 //of Sophun Games LTD is strictly prohibited and could be subject to legal action.
 
-using System.Threading.Tasks;
-
 namespace SimplePopupManager
 {
-    public interface IPopupManagerService
+    public interface IPopupManagingService
     {
         /// <summary>
         ///     Opens a popup by its name and initializes it with the given parameters.
