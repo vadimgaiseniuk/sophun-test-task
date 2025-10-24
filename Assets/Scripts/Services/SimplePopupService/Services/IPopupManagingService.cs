@@ -3,7 +3,7 @@
 //Any use, reproduction, distribution, or release of this code or documentation without the express permission
 //of Sophun Games LTD is strictly prohibited and could be subject to legal action.
 
-namespace SimplePopupManager
+namespace SimplePopupService
 {
     public interface IPopupManagingService
     {

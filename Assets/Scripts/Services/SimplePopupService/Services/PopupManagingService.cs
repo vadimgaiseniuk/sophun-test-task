@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace SimplePopupManager
+namespace SimplePopupService
 {
     /// <summary>
     ///     Manages popups, providing functionality for opening, closing, and loading popups.
