@@ -12,11 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: General
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: General
   m_Data:
     m_SerializedData: []
   m_GUID: 9f1d09b56c1b1914b9a389655a71596f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0f1bd0ad27d65824db57797338637211
+    m_Address: PlayerEntryView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 888e4d51b75e51a49af790f9309fcb79
+    m_Address: PopupView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1585639197a8d8a40a38c993455885af, type: 2}
   m_SchemaSet:
