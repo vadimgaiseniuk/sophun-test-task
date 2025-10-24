@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UserInterface
+namespace App.UserInterface
 {
     public class PlayerLeaderboardEntryView : MonoBehaviour
     {

@@ -1,13 +1,12 @@
 ﻿using Architecture.Core;
-using Architecture.Core.ContextProvider;
 using SceneManagingService;
 using Services.AssetManagingService;
 using Services.DataSerializationService;
 using Services.FileHandlingService;
+using Services.SimplePopupService;
 using Services.WebRequestHandlingService;
-using SimplePopupService;
 
-namespace App
+namespace App.GlobalStateMachine
 {
     public class GlobalStateMachine : StateMachineBase, IContextProvider<GlobalContext>
     {

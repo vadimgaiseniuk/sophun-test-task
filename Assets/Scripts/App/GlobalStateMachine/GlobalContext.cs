@@ -1,6 +1,6 @@
-﻿using UserInterface;
+﻿using App.UserInterface;
 
-namespace App
+namespace App.GlobalStateMachine
 {
     public class GlobalContext
     {

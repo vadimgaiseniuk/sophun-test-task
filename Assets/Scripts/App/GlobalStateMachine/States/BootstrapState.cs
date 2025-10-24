@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
+using App.UserInterface;
 using Architecture.Core;
-using Core.Constants;
 using SceneManagingService;
 using Services.AssetManagingService;
 using UnityEngine.SceneManagement;
-using UserInterface;
 
-namespace App
+namespace App.GlobalStateMachine
 {
     public class BootstrapState : StateBase
     {

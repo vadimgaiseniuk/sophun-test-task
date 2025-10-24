@@ -2,11 +2,11 @@
 using Services.AssetManagingService;
 using Services.DataSerializationService;
 using Services.FileHandlingService;
+using Services.SimplePopupService;
 using Services.WebRequestHandlingService;
-using SimplePopupService;
 using Zenject;
 
-namespace App
+namespace App.DependencyInjection
 {
     public class GlobalInstaller : MonoInstaller
     {
@@ -18,7 +18,7 @@ namespace App
 
         private void InstallArchitectureBindings()
         {
-            Container.Bind<GlobalStateMachine>().AsSingle();
+            Container.Bind<GlobalStateMachine.GlobalStateMachine>().AsSingle();
         }
 
         private void InstallServicesBindings()

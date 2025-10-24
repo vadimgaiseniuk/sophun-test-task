@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Architecture.Core.Data
+namespace Architecture.Core
 {
     [Serializable]
     public class LeaderboardData

@@ -1,4 +1,4 @@
-﻿namespace Architecture.Core.ContextProvider
+﻿namespace Architecture.Core
 {
     public interface IContextProvider<out T> where T : class
     { 

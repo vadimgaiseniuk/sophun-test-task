@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Services.AssetManagingService;
 using UnityEngine;
 
-namespace SimplePopupService
+namespace Services.SimplePopupService
 {
     /// <summary>
     ///     Manages popups, providing functionality for opening, closing, and loading popups.

@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using App.Constants;
-using App.UserInterface.Models;
+using App.UserInterface;
 using Architecture.Core;
-using Architecture.Core.Data;
 using Services.AssetManagingService;
 using Services.DataSerializationService;
 using Services.FileHandlingService;
+using Services.SimplePopupService;
 using Services.WebRequestHandlingService;
-using SimplePopupService;
 using UnityEngine;
 
-namespace App
+namespace App.GlobalStateMachine
 {
     public class LeaderboardState : StateBase, ILeaderboardModel
     {

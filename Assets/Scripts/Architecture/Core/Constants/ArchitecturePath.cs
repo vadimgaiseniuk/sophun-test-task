@@ -1,4 +1,4 @@
-﻿namespace Core.Constants
+﻿namespace Architecture.Core
 {
     public static class ArchitecturePath
     {

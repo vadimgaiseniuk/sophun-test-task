@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using App.UserInterface.Models;
-using Architecture.Core.Data;
+using Architecture.Core;
 using Services.AssetManagingService;
 using UnityEngine;
-using UserInterface;
 
-namespace App.UserInterface.Presenters
+namespace App.UserInterface
 {
     public class LeaderboardPopupPresenter
     {

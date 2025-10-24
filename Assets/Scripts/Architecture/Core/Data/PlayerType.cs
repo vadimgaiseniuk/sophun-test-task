@@ -1,4 +1,4 @@
-﻿namespace Architecture.Core.Data
+﻿namespace Architecture.Core
 {
     public enum PlayerType
     {

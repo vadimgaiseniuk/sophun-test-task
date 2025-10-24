@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Architecture.Core.Data;
+using Architecture.Core;
 using UnityEngine;
 
-namespace App.UserInterface.Models
+namespace App.UserInterface
 {
     public interface ILeaderboardModel
     {

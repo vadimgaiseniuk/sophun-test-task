@@ -1,13 +1,11 @@
 ﻿using System.Threading.Tasks;
-using App.UserInterface.Models;
-using App.UserInterface.Presenters;
-using Architecture.Core.Data;
+using Architecture.Core;
 using Services.AssetManagingService;
-using SimplePopupService;
+using Services.SimplePopupService;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UserInterface
+namespace App.UserInterface
 {
     public class LeaderboardPopupView : MonoBehaviour, IPopupInitialization<LeaderboardData, ILeaderboardModel>
     {

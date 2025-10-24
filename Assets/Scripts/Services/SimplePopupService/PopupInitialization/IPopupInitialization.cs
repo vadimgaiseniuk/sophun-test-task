@@ -6,7 +6,7 @@
 using System.Threading.Tasks;
 using Services.AssetManagingService;
 
-namespace SimplePopupService
+namespace Services.SimplePopupService
 {
     /// <summary>
     ///     An interface for initializing popups.

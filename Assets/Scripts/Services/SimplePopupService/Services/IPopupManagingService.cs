@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-namespace SimplePopupService
+namespace Services.SimplePopupService
 {
     public interface IPopupManagingService
     {
