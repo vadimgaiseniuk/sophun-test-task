@@ -2,31 +2,57 @@
 
 ## Architecture
 
-- For game's architecture i used a finite state machine, which allows to easily control it's state and do it clean.
-- Each scripts folder contains it's own .asmdef file for better dependency management and code separation 
-  (Architecture - contains the base code for the game's architecture, Services - conttains main services that are used in the game, App - contains functionality and code which we actually see on the screen, e.g. User Interface or Global State Machine)
+The game architecture is based on a finite state machine (FSM), which provides a clean and maintainable way to control the game’s flow and states.
+Each scripts folder contains its own .asmdef file to ensure clear dependency management and modular code separation:
+
+- Architecture — contains the core logic of the game’s architecture.
+
+- Services — includes the main independent services used throughout the game.
+
+- App — holds functionality and visual elements that appear on screen, such as the User Interface or Global State Machine.
 
 ## Composition Root
 
-- Zenject is used for dependency injection
-- All services and Global State Machine are binded in the Global Installer
-- The game is lauched using Bootstrapper which loads the BootstrapState
+Zenject is used for dependency injection.
+All services and the Global State Machine are bound within the Global Installer.
+The game is launched through a Bootstrapper, which initializes the BootstrapState.
 
 ## Services
 
-- Each independant functionality was moved to a separate service so we don't have mixed responsibilities and complete the Single Responsibility principle
-- Popup Service was renamed to fit project's naming conventions and had some minor functionality changes
+Each independent functionality is encapsulated within its own service to maintain separation of concerns and adhere to the Single Responsibility Principle.
+The Popup Service was renamed to match the project’s naming conventions and underwent minor functional adjustments.
 
-### User Interface Acrhitecture
+## User Interface Architecture
 
-- To not drastically change the existing Popup Service i adapted it to use MVP pattern,
-  where we have our Global State Machine's state as the model, the view which only contains references to the UI objects and a presenter which handles the construction and populattion of child ui objects
+To avoid major refactoring of the existing Popup Service, I adapted it to follow the MVP (Model–View–Presenter) pattern.
+In this approach:
 
-### Changes to original code
- - In Popup Service "object param" parameter was an unacceptable sollution in my opinion, not only does it not limit the code in any way but also produces unneccessary overhead by needing to box/unbox the object while casting it to the concrete implementation.
-   For the data which is passed to the popup i used generic type which is specified in the model which is calling the OpenPopup() method, the model is also passed as a generic parameter which allows to easily reuse the service in multiple states with differrent popups, 
-   however there is one thing which is problematic - if the generics are not specified in the calling method, there will be no compiler error and the method will not be called at all which is hard to debug if this is not known, so this implementation is not the best one and could be refactored to a better state(i will not do that as it will produce many changes to the original code) 
+- The Model is represented by the Global State Machine’s state.
 
-### Remarks
-- One of the requirements said that the player avatars should be loaded after the popup appeared: in the original PopupService implementation the popup is disabled before initialization and enabled right after it's finished, however for this requirement to be completed i decided to remove the disabling of the popup before initialization as there is no clean way to perform the loading of avatars afterwards, since we should not store the popup instance in the model and introducing another method just to do the loading after we initialized the popup is not a clean sollution.
-- Also the User Interface is created by using Asset Managing Service in multiple placec which is not really good and should be moved to a separate entity like factory or mediator which would be responsible for creating all the UI objects needed for the scene. I chose not to do that to avoid adding unnecessary complexity to the code and because of time constraints.
+- The View contains only references to UI objects.
+
+- The Presenter handles the construction and population of dynamic child UI elements.
+
+## Changes to the Original Code
+
+In the original implementation, the object param argument used in the PopupService was, in my opinion, an unacceptable solution.
+It not only lacked type safety but also introduced unnecessary overhead through boxing/unboxing when casting to concrete types.
+
+To address this, I replaced it with a generic type parameter that specifies the data passed to the popup.
+The model is also passed as a generic parameter, allowing the service to be easily reused across different states and popups.
+
+However, this approach has one limitation:
+if the generic types are not explicitly specified in the calling method, the compiler will not produce an error, and the method will simply not be called — which can be difficult to debug if not known.
+While this implementation works, it is not ideal and could be refactored for improved type safety.
+(I chose not to refactor further to avoid introducing large-scale changes to the original code.)
+
+## Remarks
+
+One of the requirements stated that player avatars should load after the popup appears.
+In the original PopupService, the popup was disabled before initialization and enabled afterward.
+To meet this requirement, I removed the disabling step so that avatars could be loaded dynamically after the popup becomes visible.
+This was done to maintain clean separation — since storing the popup instance in the model or adding another “post-initialization” method would have been an inelegant solution.
+
+Additionally, the Asset Managing Service is currently used in multiple UI-related places.
+Ideally, UI creation should be delegated to a dedicated factory or mediator, responsible for constructing all UI objects for the scene.
+However, I chose not to implement this change due to time constraints and to avoid adding unnecessary complexity to the existing codebase.
